@@ -1,0 +1,22 @@
+
+---
+# Source: my-website-chart/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "release-name-my-website-chart-test-connection"
+  labels:
+    helm.sh/chart: my-website-chart-0.1.0
+    app.kubernetes.io/name: my-website-chart
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['release-name-my-website-chart:80']
+  restartPolicy: Never

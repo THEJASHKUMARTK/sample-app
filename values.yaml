@@ -1,0 +1,9 @@
+image:
+  repository: "karimessouabni/lucky-app"
+
+replicaCount : 1
+
+service:
+  port: 80
+  targetPort: 8080
+  type: LoadBalancer 
